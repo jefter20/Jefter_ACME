@@ -24,5 +24,16 @@ namespace Jefter_AMCE.Negocios
         {
             return new VooDados().Excluir(objVoo);
         }
+
+        public static int Atualizar(VooDominio objVoo)
+        {
+            return new VooDados().Atualizar(objVoo);
+        }
+
+        public List<VooDominio> Buscar(VooDominio objVoo)
+        {
+            return new VooDados().Buscar(objVoo);
+
+        }
     }
 }

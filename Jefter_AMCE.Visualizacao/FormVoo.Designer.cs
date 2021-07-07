@@ -81,6 +81,7 @@ namespace Jefter_AMCE.Visualizacao
             this.txtDistancia.Name = "txtDistancia";
             this.txtDistancia.Size = new System.Drawing.Size(221, 20);
             this.txtDistancia.TabIndex = 5;
+            this.txtDistancia.TextChanged += new System.EventHandler(this.txtDistancia_TextChanged);
             // 
             // txtCusto
             // 
@@ -88,6 +89,7 @@ namespace Jefter_AMCE.Visualizacao
             this.txtCusto.Name = "txtCusto";
             this.txtCusto.Size = new System.Drawing.Size(221, 20);
             this.txtCusto.TabIndex = 4;
+            this.txtCusto.TextChanged += new System.EventHandler(this.txtCusto_TextChanged);
             // 
             // txtNivelDor
             // 
@@ -95,6 +97,7 @@ namespace Jefter_AMCE.Visualizacao
             this.txtNivelDor.Name = "txtNivelDor";
             this.txtNivelDor.Size = new System.Drawing.Size(221, 20);
             this.txtNivelDor.TabIndex = 8;
+            this.txtNivelDor.TextChanged += new System.EventHandler(this.txtNivelDor_TextChanged);
             // 
             // rbtnCapturaNao
             // 
@@ -106,6 +109,7 @@ namespace Jefter_AMCE.Visualizacao
             this.rbtnCapturaNao.TabStop = true;
             this.rbtnCapturaNao.Text = "Nao";
             this.rbtnCapturaNao.UseVisualStyleBackColor = true;
+            this.rbtnCapturaNao.CheckedChanged += new System.EventHandler(this.rbtnCapturaNao_CheckedChanged);
             // 
             // rbtnCapturaSim
             // 
@@ -117,6 +121,7 @@ namespace Jefter_AMCE.Visualizacao
             this.rbtnCapturaSim.TabStop = true;
             this.rbtnCapturaSim.Text = "Sim";
             this.rbtnCapturaSim.UseVisualStyleBackColor = true;
+            this.rbtnCapturaSim.CheckedChanged += new System.EventHandler(this.rbtnCapturaSim_CheckedChanged);
             // 
             // btnCancelar
             // 
@@ -126,6 +131,7 @@ namespace Jefter_AMCE.Visualizacao
             this.btnCancelar.TabIndex = 10;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
@@ -188,6 +194,7 @@ namespace Jefter_AMCE.Visualizacao
             this.txtData.Name = "txtData";
             this.txtData.Size = new System.Drawing.Size(221, 20);
             this.txtData.TabIndex = 3;
+            this.txtData.ValueChanged += new System.EventHandler(this.txtData_ValueChanged);
             // 
             // GridVoo
             // 

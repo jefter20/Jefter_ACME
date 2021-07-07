@@ -57,10 +57,9 @@ namespace Jefter_AMCE.Visualizacao
 
                         if (x > 0)
                         {
-                            MessageBox.Show(string.Format("Voo {} finalizado!", txtId.Text));
-                            LimparCampos();
-                            DesabilitarCampos();
-                            ListarGrid();
+                            MessageBox.Show(string.Format("Voo finalizado!"));
+
+                            FormConfiguracaoPadrao();
                         }
                         else
                         {
@@ -70,6 +69,44 @@ namespace Jefter_AMCE.Visualizacao
                     catch (Exception ex)
                     {
                         MessageBox.Show("Ocorreu um erro ao salvar " + ex.Message);
+
+                    }
+                    break;
+
+                case "Atualizar":
+                    try
+                    {
+                        objVoo.Id_voo = Convert.ToInt32(txtId.Text);
+                        objVoo.Data_voo = Convert.ToDateTime(txtData.Text);
+                        objVoo.Custo = Convert.ToDouble(txtCusto.Text);
+                        objVoo.Distancia = Convert.ToInt32(txtDistancia.Text);
+                        if (rbtnCapturaNao.Checked)
+                        {
+                            objVoo.Captura = "N";
+                        }
+
+                        if (rbtnCapturaSim.Checked)
+                        {
+                            objVoo.Captura = "S";
+                        }
+                        objVoo.Nivel_dor = Convert.ToInt32(txtNivelDor.Text);
+
+                        int x = VooNegocios.Atualizar(objVoo);
+
+                        if (x > 0)
+                        {
+                            MessageBox.Show(string.Format("Voo {0} alterado com sucesso!", txtId.Text));
+
+                            FormConfiguracaoPadrao();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Voo não alterado!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocorreu um erro e a alteração do registro de voo não foi finalizada" + ex.Message);
 
                     }
                     break;
@@ -85,9 +122,8 @@ namespace Jefter_AMCE.Visualizacao
                         {
                             MessageBox.Show(string.Format("Voo {0} excluido com sucesso!", txtId.Text));
 
-                            LimparCampos();
-                            DesabilitarCampos();
-                            ListarGrid();
+                            FormConfiguracaoPadrao();
+
                         }
                         else
                         {
@@ -142,11 +178,23 @@ namespace Jefter_AMCE.Visualizacao
             btnIncluir.Enabled = false;
             btnExcluir.Enabled = true;
             btnSalvar.Enabled = false;
-            btnCancelar.Enabled = true;
+            btnCancelar.Enabled = false;
+        }
+
+        private void FormConfiguracaoPadrao()
+        {
+            LimparCampos();
+            DesabilitarCampos();
+            ListarGrid();
+            btnIncluir.Enabled = true;
+            btnExcluir.Enabled = false;
+            btnSalvar.Enabled = false;
+            btnCancelar.Enabled = false;
         }
 
         private void LimparCampos()
         {
+            txtId.Text = "";
             txtData.Text = "";
             txtCusto.Text = "";
             txtDistancia.Text = "";
@@ -176,34 +224,86 @@ namespace Jefter_AMCE.Visualizacao
             txtData.Focus();
         }
 
+        private void SalvarCancelar()
+        {
+            btnSalvar.Enabled = true;
+            btnCancelar.Enabled = true;
+        }
+
         private void FormVoo_Load(object sender, EventArgs e)
         {
-            DesabilitarCampos();
-            ListarGrid();
-            btnExcluir.Enabled = false;
-            btnSalvar.Enabled = false;
-            btnCancelar.Enabled = false;
+            FormConfiguracaoPadrao();
         }
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
             LimparCampos();
             HabilitarCampos();
+            btnIncluir.Enabled = false;
+            btnExcluir.Enabled = false;
             btnSalvar.Enabled = true;
             btnCancelar.Enabled = true;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            opcoes = "Salvar";
-            IniciarOpcoes();
-
+            if(txtId.Text == "")
+                        {
+                opcoes = "Salvar";
+                IniciarOpcoes();
+            }else
+            {
+                opcoes = "Atualizar";
+                IniciarOpcoes();
+            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             opcoes = "Excluir";
             IniciarOpcoes();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+            DesabilitarCampos();
+            ListarGrid();
+            btnIncluir.Enabled = true;
+            btnExcluir.Enabled = false;
+            btnSalvar.Enabled = false;
+            btnCancelar.Enabled = false;
+        }
+
+        private void txtData_ValueChanged(object sender, EventArgs e)
+        {
+            SalvarCancelar();
+        }
+
+        private void txtCusto_TextChanged(object sender, EventArgs e)
+        {
+            SalvarCancelar();
+        }
+
+        private void txtDistancia_TextChanged(object sender, EventArgs e)
+        {
+            SalvarCancelar();
+        }
+
+        private void txtNivelDor_TextChanged(object sender, EventArgs e)
+        {
+            SalvarCancelar();
+
+        }
+
+        private void rbtnCapturaSim_CheckedChanged(object sender, EventArgs e)
+        {
+            SalvarCancelar();
+        }
+
+        private void rbtnCapturaNao_CheckedChanged(object sender, EventArgs e)
+        {
+            SalvarCancelar();
         }
     }
 }
