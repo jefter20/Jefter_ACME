@@ -77,9 +77,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Jefter_ACME.Dominio\Jefter_ACME.Dominio.csproj">
       <Project>{363f7d8f-b529-46cc-a1f2-307b5bff9e5c}</Project>
       <Name>Jefter_ACME.Dominio</Name>

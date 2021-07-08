@@ -33,7 +33,7 @@ namespace Jefter_AMCE.Visualizacao
                     {
                         if (txtData.Text == "" | txtCusto.Text == "" | txtDistancia.Text == "" | txtNivelDor.Text == "" | rbtnCapturaNao.Checked == false & rbtnCapturaSim.Checked == false)
                         {
-                            MessageBox.Show("Preencha todos os campos!");
+                            MessageBox.Show("Por favor, preencha todos os campos!");
                             txtData.Focus();
                             return;
                         }
@@ -76,6 +76,13 @@ namespace Jefter_AMCE.Visualizacao
                 case "Atualizar":
                     try
                     {
+                        if (txtData.Text == "" | txtCusto.Text == "" | txtDistancia.Text == "" | txtNivelDor.Text == "" | rbtnCapturaNao.Checked == false & rbtnCapturaSim.Checked == false)
+                        {
+                            MessageBox.Show("Por favor, preencha todos os campos!");
+                            txtData.Focus();
+                            return;
+                        }
+
                         objVoo.Id_voo = Convert.ToInt32(txtId.Text);
                         objVoo.Data_voo = Convert.ToDateTime(txtData.Text);
                         objVoo.Custo = Convert.ToDouble(txtCusto.Text);
@@ -228,6 +235,15 @@ namespace Jefter_AMCE.Visualizacao
         {
             btnSalvar.Enabled = true;
             btnCancelar.Enabled = true;
+            btnExcluir.Enabled = false;
+        }
+
+        private void ApenasCaracteresNumericos(KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
         }
 
         private void FormVoo_Load(object sender, EventArgs e)
@@ -304,6 +320,23 @@ namespace Jefter_AMCE.Visualizacao
         private void rbtnCapturaNao_CheckedChanged(object sender, EventArgs e)
         {
             SalvarCancelar();
+        }
+
+        private void txtCusto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ApenasCaracteresNumericos(e);
+        }
+
+        private void txtDistancia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ApenasCaracteresNumericos(e);
+
+        }
+
+        private void txtNivelDor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ApenasCaracteresNumericos(e);
+
         }
     }
 }

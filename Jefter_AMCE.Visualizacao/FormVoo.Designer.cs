@@ -82,6 +82,7 @@ namespace Jefter_AMCE.Visualizacao
             this.txtDistancia.Size = new System.Drawing.Size(221, 20);
             this.txtDistancia.TabIndex = 5;
             this.txtDistancia.TextChanged += new System.EventHandler(this.txtDistancia_TextChanged);
+            this.txtDistancia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDistancia_KeyPress);
             // 
             // txtCusto
             // 
@@ -90,6 +91,7 @@ namespace Jefter_AMCE.Visualizacao
             this.txtCusto.Size = new System.Drawing.Size(221, 20);
             this.txtCusto.TabIndex = 4;
             this.txtCusto.TextChanged += new System.EventHandler(this.txtCusto_TextChanged);
+            this.txtCusto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCusto_KeyPress);
             // 
             // txtNivelDor
             // 
@@ -98,6 +100,7 @@ namespace Jefter_AMCE.Visualizacao
             this.txtNivelDor.Size = new System.Drawing.Size(221, 20);
             this.txtNivelDor.TabIndex = 8;
             this.txtNivelDor.TextChanged += new System.EventHandler(this.txtNivelDor_TextChanged);
+            this.txtNivelDor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNivelDor_KeyPress);
             // 
             // rbtnCapturaNao
             // 
